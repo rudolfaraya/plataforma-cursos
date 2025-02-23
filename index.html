@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Cursos - Desarrollo Web con Ruby on Rails</title>
+  <!-- Incluye Tailwind CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      transition: max-height 0.5s ease-in-out, visibility 0s linear 0.5s;
+    }
+    .accordion-content.open {
+      max-height: 2000px; /* Ajusta este valor según el contenido máximo esperado */
+      visibility: visible;
+      transition: max-height 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Hero Section -->
+  <div class="min-h-screen bg-gradient-to-r from-indigo-600 to-purple-600">
+    <div class="container mx-auto px-4 py-16 md:px-8 lg:px-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-white text-center mb-6">
+        Curso Desarrollo Web con Ruby on Rails 💎 (Básico)
+      </h1>
+      <p class="text-xl text-white text-center mb-8 px-4 md:px-8 lg:px-12">
+        Aprende a desarrollar aplicaciones web modernas en 6 meses. En este curso aprenderemos a crear un blog básico con artículos, comentarios, con autenticación de usuarios, autorización de acciones, tareas asíncronas, indexación y otros temas.
+      </p>
+
+      <!-- Contenedor Responsive para Curso Info y Temario -->
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        <!-- Curso Info Card (siempre arriba en móviles, lado izquierdo en desktop) -->
+        <div class="bg-white rounded-lg shadow-xl p-8 mb-8">
+          <div class="space-y-6">
+            <!-- Detalles del Curso (primera fila) -->
+            <div>
+              <h2 class="text-2xl font-semibold text-gray-800 mb-4">Detalles del Curso</h2>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Nivel:</strong> 🌱 Básico</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Duración:</strong> ⏱️ 6 meses</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Duración de cada clase:</strong> ⏱️ Entre 1 a 1 hora y media</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Modalidad:</strong> 💻 Remota (Discord)</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Horario:</strong> 📅 Jueves 22:30 (una vez a la semana)</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Inicio:</strong> 🗓️ 6 de Marzo 2025</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Características (segunda fila) -->
+            <div>
+              <h2 class="text-2xl font-semibold text-gray-800 mb-4">Características</h2>
+              <ul class="space-y-3 text-gray-600">
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span>📹 Clases grabadas en Discord</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Temario: 📚 </strong><a href="https://bit.ly/rails-2025-curso" target="_blank" class="text-indigo-600 hover:underline">Ver temario completo</a></span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Precio:</strong> 💰 $20.000/mes</span>
+                </li>
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Requisitos:</strong> 📋 No se necesita experiencia previa en programación</span>
+                </li>                
+                <li class="flex items-center">
+                  <span class="text-indigo-600 mr-2">●</span>
+                  <span><strong>Requiere equipo propio:</strong> 🖥️ (Sistema Operativo: Windows (Compatible con WSL), Mac o Linux)</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="mt-8 text-center">
+              <a href="https://wa.me/+56993560314?text=Hola,%20quiero%20inscribirme%20al%20curso%20de%20Ruby%20on%20Rails" target="_blank" class="inline-block bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-300">
+                Inscribirme Ahora
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Temario (abajo en móviles, lado derecho en desktop) -->
+        <div class="bg-white rounded-lg shadow-xl p-8">
+          <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">Temario del Curso</h2>
+          <div class="accordion">
+            <!-- Mes 1 -->
+            <div class="mb-4">
+              <button class="w-full text-left bg-yellow-300 p-4 rounded-lg font-semibold text-gray-800 hover:bg-yellow-400 transition duration-200">
+                Mes 1: Fundamentos
+              </button>
+              <div class="accordion-content mt-2 p-4 bg-white rounded-lg shadow">
+                <table class="w-full border-collapse">
+                  <thead class="bg-gray-200 text-gray-800">
+                    <tr>
+                      <th class="p-2 text-left font-semibold">Semana</th>
+                      <th class="p-2 text-left font-semibold">Título de la Sesión</th>
+                      <th class="p-2 text-left font-semibold">Contenidos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 1</td>
+                      <td>Introducción al Curso</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Presentación del Curso y Planificación</li>
+                          <li>Herramientas para dar el curso</li>
+                          <li>Introducción a Ruby</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 2</td>
+                      <td>Métodos, Tipos de datos, Clases</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Tipos de Datos</li>
+                          <li>Clases y Métodos de Clase</li>
+                          <li>Ejercitación</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 3</td>
+                      <td>Iteradores y bloques</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Configuración de ambiente de desarrollo</li>
+                          <li>Ciclos / Bucles</li>
+                          <li>Clases y Métodos de Clase Parte 2 (Ejercicios)</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 4</td>
+                      <td>Programación Orientada a Objetos (POO / OOP)</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Ejercicio Sistema de Notas Escolar</li>
+                          <li>Clase Estudiante y sus métodos</li>
+                          <li>Clase Curso y sus métodos</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Mes 2 -->
+            <div class="mb-4">
+              <button class="w-full text-left bg-yellow-300 p-4 rounded-lg font-semibold text-gray-800 hover:bg-yellow-400 transition duration-200">
+                Mes 2: Bases de Datos e Intro a Rails
+              </button>
+              <div class="accordion-content mt-2 p-4 bg-white rounded-lg shadow">
+                <table class="w-full border-collapse">
+                  <thead class="bg-gray-200 text-gray-800">
+                    <tr>
+                      <th class="p-2 text-left font-semibold">Semana</th>
+                      <th class="p-2 text-left font-semibold">Título de la Sesión</th>
+                      <th class="p-2 text-left font-semibold">Contenidos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 5</td>
+                      <td>Programación Orientada a Objetos (POO / OOP)</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Ejercicio Sistema de Notas Escolar Parte 2</li>
+                          <li>Ranking de Notas / Curso</li>
+                          <li>Informe de Notas</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 6</td>
+                      <td>Base de datos relacionales y SQL, Lectura de un CSV</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Introducción a Base de datos relacionales</li>
+                          <li>SQL (CRUD y principales comandos)</li>
+                          <li>Diseño de una estructura de una base de datos</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 7</td>
+                      <td>Revisión de diseños BD, Introducción a Rails</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Ejemplos de BD (Diseños y consultas simples)</li>
+                          <li>Introducción a Rails y a MVC</li>
+                          <li>Estructura de archivos</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 8</td>
+                      <td>Rails en detalle</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Arquitectura Rails</li>
+                          <li>Configuración de ambiente de desarrollo para Rails</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Mes 3 -->
+            <div class="mb-4">
+              <button class="w-full text-left bg-green-300 p-4 rounded-lg font-semibold text-gray-800 hover:bg-green-400 transition duration-200">
+                Mes 3: Desarrollo Básico en Rails
+              </button>
+              <div class="accordion-content mt-2 p-4 bg-white rounded-lg shadow">
+                <table class="w-full border-collapse">
+                  <thead class="bg-gray-200 text-gray-800">
+                    <tr>
+                      <th class="p-2 text-left font-semibold">Semana</th>
+                      <th class="p-2 text-left font-semibold">Título de la Sesión</th>
+                      <th class="p-2 text-left font-semibold">Contenidos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 9</td>
+                      <td>Rutas, Controladores y Vistas</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Mi primer proyecto en Rails</li>
+                          <li>Controladores y Vistas</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 10</td>
+                      <td>CRUD y Formularios</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Creación de Modelo para nuestro blog</li>
+                          <li>Modelos y migraciones</li>
+                          <li>Introducción a Git, Github y repositorios</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 11</td>
+                      <td>Acciones del controlador y Formularios: Parte 1</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Mostrar artículos en nuestro blog</li>
+                          <li>Acciones show e index</li>
+                          <li>Formularios: Crear un artículo</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 12</td>
+                      <td>Acciones del controlador y Formularios: Parte 2</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Formularios: Crear un artículo 2</li>
+                          <li>Acciones editar y eliminar un artículo</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Mes 4 -->
+            <div class="mb-4">
+              <button class="w-full text-left bg-green-600 p-4 rounded-lg font-semibold text-white hover:bg-green-700 transition duration-200">
+                Mes 4: Autenticación y Relaciones
+              </button>
+              <div class="accordion-content mt-2 p-4 bg-white rounded-lg shadow">
+                <table class="w-full border-collapse">
+                  <thead class="bg-gray-200 text-gray-800">
+                    <tr>
+                      <th class="p-2 text-left font-semibold">Semana</th>
+                      <th class="p-2 text-left font-semibold">Título de la Sesión</th>
+                      <th class="p-2 text-left font-semibold">Contenidos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 13</td>
+                      <td>Segundo modelo - Comentarios - Texto enriquecido</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Texto Enriquecido</li>
+                          <li>Comentarios de un artículo</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 14</td>
+                      <td>Autenticación: Parte 1</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Autenticación con Devise</li>
+                          <li>Creación del modelo Usuario</li>
+                          <li>Configuración de la gema</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 15</td>
+                      <td>Autenticación: Parte 2</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Configuración de registro e inicio de sesión</li>
+                          <li>Servicio de correos local: Mailcatcher</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 16</td>
+                      <td>Repaso Práctico</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Repaso práctico para los estudiantes</li>
+                          <li>Ajustes visuales según usuario con sesión iniciada</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Mes 5 -->
+            <div class="mb-4">
+              <button class="w-full text-left bg-blue-600 p-4 rounded-lg font-semibold text-white hover:bg-blue-700 transition duration-200">
+                Mes 5: Autorización y Tareas Asíncronas
+              </button>
+              <div class="accordion-content mt-2 p-4 bg-white rounded-lg shadow">
+                <table class="w-full border-collapse">
+                  <thead class="bg-gray-200 text-gray-800">
+                    <tr>
+                      <th class="p-2 text-left font-semibold">Semana</th>
+                      <th class="p-2 text-left font-semibold">Título de la Sesión</th>
+                      <th class="p-2 text-left font-semibold">Contenidos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 17</td>
+                      <td>Autenticación: Parte 3</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Relación de Usuarios con Artículos y Comentarios</li>
+                          <li>Estados de un artículo</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 18</td>
+                      <td>Autorización: Parte 1</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Autorización con Pundit</li>
+                          <li>Creando una Policy</li>
+                          <li>Filtrar artículos según Scope</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 19</td>
+                      <td>Autorización: Parte 2</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Nuevas acciones: Publicar y Borrador</li>
+                          <li>Condicionar acciones con Pundit y uso de estados</li>
+                          <li>Ajustes visuales para nuevas acciones</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 20</td>
+                      <td>Tareas en segundo plano (asíncronos)</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Configuración de Solid Queue</li>
+                          <li>Creación de una Tarea/Job</li>
+                          <li>Dashboard de tareas</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Mes 6 -->
+            <div class="mb-4">
+              <button class="w-full text-left bg-blue-600 p-4 rounded-lg font-semibold text-white hover:bg-blue-700 transition duration-200">
+                Mes 6: Finalización y Deploy
+              </button>
+              <div class="accordion-content mt-2 p-4 bg-white rounded-lg shadow">
+                <table class="w-full border-collapse">
+                  <thead class="bg-gray-200 text-gray-800">
+                    <tr>
+                      <th class="p-2 text-left font-semibold">Semana</th>
+                      <th class="p-2 text-left font-semibold">Título de la Sesión</th>
+                      <th class="p-2 text-left font-semibold">Contenidos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 21</td>
+                      <td>Ordenamiento y Filtrado con Turbo: Parte 1</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Nuevo proyecto con tabla de datos con Faker</li>
+                          <li>Ordenar datos</li>
+                          <li>Orden ascendente y descendente</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 22</td>
+                      <td>Ordenamiento y Filtrado con Turbo: Parte 2</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Agregar buscador</li>
+                          <li>Autosubmit del buscador</li>
+                          <li>Filtrado por columna</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 23</td>
+                      <td>Finalizando Blog</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Seeds / Datos preexistentes</li>
+                          <li>Buscador para nuestro blog</li>
+                          <li>Paginación</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="border-b">
+                      <td class="p-2">Semana 24</td>
+                      <td>Testing y Deploy</td>
+                      <td>
+                        <ul class="list-disc pl-5">
+                          <li>Seguimiento de errores (debugging)</li>
+                          <li>TDD y tests unitarios con RSpec</li>
+                          <li>Deploy: Introducción a Kamal</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Script para el accordion con animación suave -->
+  <script>
+    document.querySelectorAll('.accordion button').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        content.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
