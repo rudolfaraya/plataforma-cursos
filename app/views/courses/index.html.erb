@@ -1,13 +1,13 @@
-<!-- app/views/courses/index.html.erb -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plataforma de Cursos - Desarrollo Web con Ruby on Rails</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <!-- Incluye Tailwind CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Incluye Font Awesome via CDN para los íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     .accordion-content {
       max-height: 0;
@@ -16,9 +16,33 @@
       transition: max-height 0.5s ease-in-out, visibility 0s linear 0.5s;
     }
     .accordion-content.open {
-      max-height: 2000px; 
+      max-height: 2000px; /* Ajusta este valor según el contenido máximo esperado */
       visibility: visible;
       transition: max-height 0.5s ease-in-out;
+    }
+    .floating-button {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background-color: #4a5568; /* Color gris oscuro inicial */
+      color: white;
+      padding: 12px 24px;
+      border-radius: 9999px; /* Bordes redondeados completos */
+      font-weight: 600;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .floating-button:hover {
+      background-color: #2d3748; /* Color gris más oscuro al pasar el mouse */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+    }
+    @media (max-width: 768px) {
+      .floating-button {
+        bottom: 10px;
+        padding: 8px 16px;
+        font-size: 0.875rem; /* text-sm */
+      }
     }
   </style>
 </head>
@@ -30,9 +54,8 @@
         Curso Desarrollo Web con Ruby on Rails 💎 (Básico)
       </h1>
       <p class="text-xl text-white text-center mb-8 px-4 md:px-8 lg:px-12">
-        En este curso aprenderás a construir un blog completo desde cero, incluyendo artículos, comentarios, autenticación de usuarios, autorización de acciones, tareas asíncronas, indexación y más. Trabajaremos con Ruby 3.3+ y Rails 8, aprovechando sus tecnologías más recientes, como Turbo. Domina las bases del desarrollo web con un enfoque práctico y guiado.
+        Aprende a desarrollar aplicaciones web modernas en 6 meses. En este curso aprenderemos a crear un blog básico con artículos, comentarios, con autenticación de usuarios, autorización de acciones, tareas asíncronas, indexación y otros temas.
       </p>
-      <p class="text-xl text-white text-center mb-8 px-4 md:px-8 lg:px-12">¡Inscríbete ahora y lleva tus habilidades al siguiente nivel!</p>
 
       <!-- Contenedor Responsive para Curso Info y Temario -->
       <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
@@ -490,14 +513,49 @@
         </div>
       </div>
 
-    <!-- Sección de Video (abajo de las columnas, centrado) -->
+      <!-- Sección de Video (abajo de las columnas, centrado) -->
       <div class="max-w-6xl mx-auto mt-8 p-4">
-        <h2 class="text-2xl font-semibold text-white text-center mb-4">Muestra del Curso</h2> <!-- Cambié text-gray-800 a text-white -->
+        <h2 class="text-2xl font-semibold text-white text-center mb-4">Muestra del Curso</h2>
         <div class="flex justify-center">
           <iframe src="https://player.vimeo.com/video/1059554283" width="700" height="700" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
+
+      <!-- Sección Sobre el Instructor (abajo de todo el contenido) -->
+      <div class="max-w-6xl mx-auto mt-12 p-8 bg-white rounded-lg shadow-xl">
+        <h2 class="text-2xl font-semibold text-white text-center mb-6">Sobre el Instructor</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Columna 1: Foto (más estrecha) -->
+          <div class="flex flex-col items-center col-span-1">
+            <!-- Foto de perfil desde PostImage -->
+            <img src="https://i.postimg.cc/Xq2RCV2x/profile.jpg" alt="Foto de Rodolfo Araya" class="w-32 h-32 rounded-full object-cover mb-4">
+            <!-- Enlaces a LinkedIn y GitHub -->
+            <div class="flex justify-center gap-4">
+              <!-- Ícono LinkedIn (Font Awesome) -->
+              <a href="https://www.linkedin.com/in/rudolfaraya" target="_blank" class="text-indigo-600 hover:text-indigo-800">
+                <i class="fab fa-linkedin fa-2x"></i>
+              </a>
+              <!-- Ícono GitHub (Font Awesome) -->
+              <a href="https://github.com/rudolfaraya/que" target="_blank" class="text-gray-800 hover:text-gray-600">
+                <i class="fab fa-github fa-2x"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Columna 2: Título, subtítulo y texto (más ancha) -->
+          <div class="text-gray-800 col-span-2">
+            <h2 class="text-2xl font-bold mb-2">Rodolfo Araya</h2>
+            <h3 class="text-xl font-semibold mb-4">Me desempeño como Desarrollador Web y DevOps en 4Talent y ControlDoc.</h3>
+            <p class="mb-4 text-wrap">
+              Poseo más de 8 años de experiencia y me he especializado en el framework Ruby on Rails. Soy responsable de varias plataformas de reclutamiento y selección, como <a href="https://miterna.com" target="_blank" class="text-indigo-600 hover:underline">https://miterna.com</a>, <a href="https://shortlist.chat" target="_blank" class="text-indigo-600 hover:underline">https://shortlist.chat</a> y <a href="https://tests.4talent.cl" target="_blank" class="text-indigo-600 hover:underline">https://tests.4talent.cl</a>. También ejerzo como Administrador de Sistemas, Ciberseguridad y DevOps desde 2021, optimizando infraestructuras y flujos de trabajo. Como instructor autónomo desde el año anterior, imparto cursos remotos tipo Bootcamp sobre Ruby on Rails, enseñando desde lo básico hasta la creación de aplicaciones con autenticación, autorización, trabajos asíncronos e indexación.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón flotante "Inscribirme Ahora" -->
+      <a href="https://wa.me/+56993560314?text=Hola,%20quiero%20inscribirme%20al%20curso%20de%20Ruby%20on%20Rails" target="_blank" class="floating-button">
+        Inscribirme Ahora
+      </a>
 
   <!-- Script para el accordion con animación suave -->
   <script>
